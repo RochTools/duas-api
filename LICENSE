@@ -1,0 +1,28 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+Applies to: data/ (the compiled dataset) and scripts/chapter_titles.json
+
+You are free to share and adapt this dataset for any purpose, including
+commercially, provided you give appropriate credit, provide a link to the
+licence, and indicate if changes were made.
+
+Required attribution (also embedded in every data/*/duas.json under
+meta.attribution):
+
+  Compiled from open sources: OpenDua (opendua.hdfund.org, CC BY 4.0),
+  ahmedsalahulddin/salahulddin-azkar, and the hisnmuslim.com English
+  translation. Hisn al-Muslim by Sa'id bin 'Ali bin Wahf al-Qahtani.
+  Urdu and Hindi texts are machine translations and have not been
+  human-reviewed.
+
+Full licence text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+NOTE ON THIRD-PARTY CONTENT
+  * OpenDua data is CC BY 4.0 — https://opendua.hdfund.org/
+    (recitation audio has separate terms; see https://opendua.hdfund.org/licence)
+  * ahmedsalahulddin/salahulddin-azkar states no licence. Its Arabic,
+    English, Urdu and Hindi texts are reproduced here with attribution;
+    verify permissions before redistributing commercially.
+  * Religious source text (Quran and Sunnah) is not claimed by anyone.
+
+The build scripts (scripts/*.py, scripts/*.sh) are licensed separately
+under the MIT licence — see LICENSE-CODE.

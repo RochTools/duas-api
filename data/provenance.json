@@ -1,0 +1,61 @@
+{
+  "book": {
+    "id": "hisn-al-muslim",
+    "title": {
+      "ar": "حصن المسلم من أذكار الكتاب والسنة",
+      "en": "Hisn al-Muslim (Fortress of the Muslim)",
+      "ur": "حصن المسلم (قلعہ المسلم)",
+      "hi": "हिसनुल मुस्लिम (क़िलआ-ए-मुस्लिम)"
+    },
+    "author": {
+      "ar": "سعيد بن علي بن وهف القحطاني",
+      "en": "Sa'id bin 'Ali bin Wahf al-Qahtani"
+    }
+  },
+  "sources": [
+    {
+      "id": "azkar-hisn",
+      "name": "ahmedsalahulddin/salahulddin-azkar — assets/adhkar/hisn.json",
+      "url": "https://github.com/ahmedsalahulddin/salahulddin-azkar",
+      "provides": [
+        "arabic",
+        "english (hisnmuslim.com)",
+        "repeat count",
+        "audio id"
+      ],
+      "license": "not stated in repository"
+    },
+    {
+      "id": "hisn-translations",
+      "name": "ahmedsalahulddin/salahulddin-azkar — lib/data/hisn_translations/{ur,hi}.dart",
+      "url": "https://github.com/ahmedsalahulddin/salahulddin-azkar/tree/main/lib/data/hisn_translations",
+      "provides": [
+        "urdu",
+        "hindi"
+      ],
+      "license": "not stated in repository; machine translation (Claude AI), disclosed by the author"
+    },
+    {
+      "id": "opendua",
+      "name": "OpenDua catalogue v0.0.4 (2026-09-09)",
+      "url": "https://opendua.hdfund.org/",
+      "data": "https://opendua.hdfund.org/v0.0.4/catalogue.json",
+      "provides": [
+        "transliteration",
+        "curated english (recitation only)",
+        "tags",
+        "audio urls"
+      ],
+      "license": "CC BY 4.0 (OpenDua data licence); audio has separate terms"
+    }
+  ],
+  "license": {
+    "dataset": "CC BY 4.0 (this compilation)",
+    "arabic": "Public religious source text; not claimed by any contributor.",
+    "notes": [
+      "ar / en / transliteration / audio: OpenDua (CC BY 4.0) + hisnmuslim.com English.",
+      "ur / hi: machine translations published by ahmedsalahulddin/salahulddin-azkar; they are NOT human-reviewed. Verify with a published translation before shipping."
+    ]
+  },
+  "attribution": "Compiled from open sources: OpenDua (opendua.org, CC BY 4.0), ahmedsalahulddin/salahulddin-azkar, hisnmuslim.com English translation. Hisn al-Muslim by Sa'id bin 'Ali bin Wahf al-Qahtani."
+}

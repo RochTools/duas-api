@@ -8,11 +8,11 @@ Sa'id bin 'Ali bin Wahf al-Qahtani (سعيد بن علي بن وهف القحط�
 
 | Field(s) | Source | Licence | Notes |
 |---|---|---|---|
-| `arabic`, `repeat`, `audio.hisnmuslimId`, chapters | [ahmedsalahulddin/salahulddin-azkar](https://github.com/ahmedsalahulddin/salahulddin-azkar) → `assets/adhkar/hisn.json` | none stated | That file itself credits the hisnmuslim.com API. Arabic is the standard printed text. |
-| `text` (en) | same file, key `en` | none stated | Publisher's English (hisnmuslim.com / Darussalam lineage). Only mechanical cleanup applied (see below). |
-| `text` (ur) | same repo → `lib/data/hisn_translations/ur.dart` | none stated | **Machine translation (Claude AI)**, disclosed by the repo author. 267/267 keys. |
-| `text` (hi) | same repo → `lib/data/hisn_translations/hi.dart` | none stated | **Machine translation (Claude AI)**, disclosed by the repo author. 267/267 keys. |
-| `transliteration`, `englishRecitationOnly`, `guidance`, `parts`, `placeholders`, `tags`, `title`, `audio.opendua` | [OpenDua](https://opendua.hdfund.org/) catalogue v0.0.4 (2026-09-09) — `https://opendua.hdfund.org/v0.0.4/catalogue.json` | **CC BY 4.0** (data); audio has separate terms | 267 entries, 262 duas, 249 recordings, 132 chapters, 19 tags. |
+| `arabic`, `repeat`, `hisnmuslimId`, chapters | [ahmedsalahulddin/salahulddin-azkar](https://github.com/ahmedsalahulddin/salahulddin-azkar) → `assets/adhkar/hisn.json` | none stated | That file itself credits the hisnmuslim.com API. Arabic is the standard printed text. |
+| `translation` (en) | same file, key `en` | none stated | Publisher's English (hisnmuslim.com / Darussalam lineage). Only mechanical cleanup applied (see below). |
+| `translation` (ur) | same repo → `lib/data/hisn_translations/ur.dart` | none stated | **Machine translation (Claude AI)**, disclosed by the repo author. 267/267 keys. |
+| `translation` (hi) | same repo → `lib/data/hisn_translations/hi.dart` | none stated | **Machine translation (Claude AI)**, disclosed by the repo author. 267/267 keys. |
+| `transliteration`, `recitationOnly`, `guidance`, `parts`, `placeholders`, `tags`, chapter `title` (en), `audio` | [OpenDua](https://opendua.hdfund.org/) catalogue v0.0.4 (2026-09-09) — `https://opendua.hdfund.org/v0.0.4/catalogue.json` | **CC BY 4.0** (data); audio has separate terms | 267 entries, 262 duas, 249 recordings, 132 chapters, 19 tags. |
 | chapter titles `ur` / `hi` | written for this dataset in `scripts/chapter_titles.json` | CC BY 4.0 (this compilation) | Rendered from the Arabic/English titles; **needs human review**. |
 
 ## How the sources were joined
@@ -27,7 +27,7 @@ Sa'id bin 'Ali bin Wahf al-Qahtani (سعيد بن علي بن وهف القحط�
    * weakest pair `28-08` = 0.57, and that is only because OpenDua splits
      "SubhanAllah ×33 / Alhamdulillah ×33 / Allahu Akbar ×34" into three parts
      while the azkar text keeps them in one string. Those splits are preserved in `parts`.
-3. `audio.opendua.url` is taken from the recording attached to the aligned OpenDua
+3. `audio.url` is taken from the recording attached to the aligned OpenDua
    entry (230 of 267 items have one; reciter: Muhammad Jumah).
 
 ## Edits applied to source text
@@ -46,9 +46,9 @@ Sa'id bin 'Ali bin Wahf al-Qahtani (سعيد بن علي بن وهف القحط�
 | Gap | Count | Reason |
 |---|---|---|
 | no `transliteration` | 37 | item is pure narration/instruction — nothing to recite |
-| no `audio.opendua.url` | 37 | OpenDua has 249 recordings for 262 duas |
-| no `audio.hisnmuslimId` | 1 | not present in the upstream file |
-| `reference.references` empty | most | the upstream files carry a book reference number (`sourceReference`) but not per-hadith citations; add them from sunnah.com if you need graded references |
+| no `audio` | 37 | OpenDua has 249 recordings for 262 duas |
+| `hisnmuslimId` is `null` | 1 | not present in the upstream file |
+| per-hadith citations | all (the always-empty `references` array was dropped in 2.0.0) | the upstream files carry a book reference number (`sourceReference`) but not per-hadith citations; add them from sunnah.com if you need graded references |
 
 ## Reusing this data — attribution
 
@@ -64,14 +64,21 @@ The same strings are embedded in `meta.license` and `meta.attribution` of every
 
 ## Upgrading Urdu/Hindi to a human translation
 
-Keep the `id` scheme (`"<chapter>-<item>"`) and replace only the `text` values:
+Keep the `id` scheme (`"<chapter>-<item>"`) and replace only the `translation`
+values in `data/translations/ur.json` (or `hi.json`):
 
 1. Obtain a licensed Urdu/Hindi Hisn al-Muslim translation
    (Darussalam print/PDF, islamdb.pk, or the CC BY 4.0
    [Kaggle 72-dua set](https://www.kaggle.com/datasets/ahsanneural/islamic-dua-and-adhkar-72-verified-duas)
    for the most common duas).
-2. Put it in `_src/` as a `"chapterId:itemNumber" -> text` map
-   (or a Dart/CSV/JSON file with the same keys).
-3. Point `scripts/build_duas.py` at the new file and re-run — everything else
-   (alignment, tags, audio, transliteration, validation) is regenerated automatically.
-4. Then set `translationKind: "human"` and update `translationSource` in the script.
+2. Edit the `translation` values and set `meta.translationKind` to `"human"`
+   and update `meta.translationSource`.
+3. Run `python3 scripts/build_dist.py`. It validates the data and regenerates
+   `dist/` and `index.json`.
+
+## v2.0.0 additions (not from the upstream sources)
+
+* Urdu/Hindi `placeholders` instructions (two short UI hints) and the placeholder
+  wording were written for this dataset; they are not scripture.
+* `data/` is now the source of truth; `legacy-v1/` keeps the 1.0.0 files.
+  `scripts/migrate_v1_to_v2.py` shows exactly how 1.0.0 was converted.

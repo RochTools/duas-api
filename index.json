@@ -1,7 +1,7 @@
 {
   "name": "duas-dataset",
-  "version": "1.0.0",
-  "generatedAt": "2026-10-06T17:59:24Z",
+  "version": "2.0.0",
+  "generatedAt": "2026-10-28T06:26:07Z",
   "book": {
     "id": "hisn-al-muslim",
     "title": {
@@ -21,45 +21,57 @@
     "languages": [
       "ar",
       "en",
-      "hi",
-      "ur"
+      "ur",
+      "hi"
     ]
+  },
+  "data": {
+    "chapters": "data/chapters.json",
+    "duas": "data/duas.json",
+    "reciters": "data/reciters.json",
+    "translations": {
+      "en": "data/translations/en.json",
+      "ur": "data/translations/ur.json",
+      "hi": "data/translations/hi.json"
+    }
+  },
+  "dist": {
+    "perLanguage": {
+      "ar": "dist/ar/duas.json",
+      "en": "dist/en/duas.json",
+      "ur": "dist/ur/duas.json",
+      "hi": "dist/hi/duas.json"
+    },
+    "all": "dist/duas.all.json",
+    "csv": "dist/duas.csv"
   },
   "languages": {
     "ar": {
-      "path": "data/ar/duas.json",
-      "nativeName": "العربية",
       "englishName": "Arabic",
+      "nativeName": "العربية",
       "direction": "rtl",
       "translationKind": "original"
     },
     "en": {
-      "path": "data/en/duas.json",
-      "nativeName": "English",
       "englishName": "English",
+      "nativeName": "English",
       "direction": "ltr",
       "translationKind": "human"
     },
     "ur": {
-      "path": "data/ur/duas.json",
-      "nativeName": "اردو",
       "englishName": "Urdu",
+      "nativeName": "اردو",
       "direction": "rtl",
       "translationKind": "machine"
     },
     "hi": {
-      "path": "data/hi/duas.json",
-      "nativeName": "हिन्दी",
       "englishName": "Hindi",
+      "nativeName": "हिन्दी",
       "direction": "ltr",
       "translationKind": "machine"
     }
   },
-  "extras": {
-    "data/duas.all.json": "every dua with all four languages in one flat record",
-    "data/duas.csv": "spreadsheet view (one row per dua)",
-    "data/SOURCES.md": "provenance + licence notes"
-  },
+  "legacy": "legacy-v1/ holds the unmodified 1.0.0 files (with the ۝ fix only)",
   "sources": [
     {
       "id": "azkar-hisn",
@@ -96,5 +108,14 @@
       ],
       "license": "CC BY 4.0 (OpenDua data licence); audio has separate terms"
     }
-  ]
+  ],
+  "license": {
+    "dataset": "CC BY 4.0 (this compilation)",
+    "arabic": "Public religious source text; not claimed by any contributor.",
+    "notes": [
+      "ar / en / transliteration / audio: OpenDua (CC BY 4.0) + hisnmuslim.com English.",
+      "ur / hi: machine translations published by ahmedsalahulddin/salahulddin-azkar; they are NOT human-reviewed. Verify with a published translation before shipping."
+    ]
+  },
+  "attribution": "Compiled from open sources: OpenDua (opendua.org, CC BY 4.0), ahmedsalahulddin/salahulddin-azkar, hisnmuslim.com English translation. Hisn al-Muslim by Sa'id bin 'Ali bin Wahf al-Qahtani."
 }

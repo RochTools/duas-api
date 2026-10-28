@@ -1,0 +1,100 @@
+{
+  "name": "duas-dataset",
+  "version": "1.0.0",
+  "generatedAt": "2026-10-06T17:59:24Z",
+  "book": {
+    "id": "hisn-al-muslim",
+    "title": {
+      "ar": "حصن المسلم من أذكار الكتاب والسنة",
+      "en": "Hisn al-Muslim (Fortress of the Muslim)",
+      "ur": "حصن المسلم (قلعہ المسلم)",
+      "hi": "हिसनुल मुस्लिम (क़िलआ-ए-मुस्लिम)"
+    },
+    "author": {
+      "ar": "سعيد بن علي بن وهف القحطاني",
+      "en": "Sa'id bin 'Ali bin Wahf al-Qahtani"
+    }
+  },
+  "counts": {
+    "chapters": 132,
+    "duas": 267,
+    "languages": [
+      "ar",
+      "en",
+      "hi",
+      "ur"
+    ]
+  },
+  "languages": {
+    "ar": {
+      "path": "data/ar/duas.json",
+      "nativeName": "العربية",
+      "englishName": "Arabic",
+      "direction": "rtl",
+      "translationKind": "original"
+    },
+    "en": {
+      "path": "data/en/duas.json",
+      "nativeName": "English",
+      "englishName": "English",
+      "direction": "ltr",
+      "translationKind": "human"
+    },
+    "ur": {
+      "path": "data/ur/duas.json",
+      "nativeName": "اردو",
+      "englishName": "Urdu",
+      "direction": "rtl",
+      "translationKind": "machine"
+    },
+    "hi": {
+      "path": "data/hi/duas.json",
+      "nativeName": "हिन्दी",
+      "englishName": "Hindi",
+      "direction": "ltr",
+      "translationKind": "machine"
+    }
+  },
+  "extras": {
+    "data/duas.all.json": "every dua with all four languages in one flat record",
+    "data/duas.csv": "spreadsheet view (one row per dua)",
+    "data/SOURCES.md": "provenance + licence notes"
+  },
+  "sources": [
+    {
+      "id": "azkar-hisn",
+      "name": "ahmedsalahulddin/salahulddin-azkar — assets/adhkar/hisn.json",
+      "url": "https://github.com/ahmedsalahulddin/salahulddin-azkar",
+      "provides": [
+        "arabic",
+        "english (hisnmuslim.com)",
+        "repeat count",
+        "audio id"
+      ],
+      "license": "not stated in repository"
+    },
+    {
+      "id": "hisn-translations",
+      "name": "ahmedsalahulddin/salahulddin-azkar — lib/data/hisn_translations/{ur,hi}.dart",
+      "url": "https://github.com/ahmedsalahulddin/salahulddin-azkar/tree/main/lib/data/hisn_translations",
+      "provides": [
+        "urdu",
+        "hindi"
+      ],
+      "license": "not stated in repository; machine translation (Claude AI), disclosed by the author"
+    },
+    {
+      "id": "opendua",
+      "name": "OpenDua catalogue v0.0.4 (2026-09-09)",
+      "url": "https://opendua.hdfund.org/",
+      "data": "https://opendua.hdfund.org/v0.0.4/catalogue.json",
+      "provides": [
+        "transliteration",
+        "curated english (recitation only)",
+        "tags",
+        "audio urls"
+      ],
+      "license": "CC BY 4.0 (OpenDua data licence); audio has separate terms"
+    }
+  ]
+}
